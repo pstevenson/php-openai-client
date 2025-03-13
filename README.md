@@ -7,7 +7,7 @@
 
 # Experimental PHP OpenAI Responses Client
 
-This is an **experimental** PHP client for the new **OpenAI Responses API**. It implements the `create`, `find`, and `delete` methods from the API, returning mapped response objects for seamless integration.
+This is an **experimental** PHP client for the new **OpenAI Responses API**. It implements the `create`, `find`, `delete` and `list input items` methods from the API, returning mapped response objects for seamless integration.
 
 The goal of this experimental client is to provide a quick, easy-to-use library that allows you to experiment with the new endpoints from early on.
 
