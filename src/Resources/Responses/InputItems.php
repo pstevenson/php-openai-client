@@ -17,13 +17,29 @@ class InputItems
     /**
      * List input items.
      *
+     * @param string $id The response ID.
+     * @param array  $params Optional query parameters:
+     *                       - after: string, an item ID to list items after.
+     *                       - before: string, an item ID to list items before.
+     *                       - limit: int, a limit on the number of objects to be returned (defaults to 20).
+     *                       - order: string, the order to return the items in (asc or desc, default is asc).
+     *
      * @return InputItemsListResponse
      */
-    public function list($id): InputItemsListResponse
+    public function list(string $id, array $params = []): InputItemsListResponse
     {
-        $response = $this->client->get('responses/' . $id . '/input_items');
-        $data = json_decode($response->getBody()->getContents(), true);
+        // Optional: set defaults if not provided
+        if (!isset($params['limit'])) {
+            $params['limit'] = 20;
+        }
+        if (!isset($params['order'])) {
+            $params['order'] = 'asc';
+        }
 
+        $response = $this->client->get('responses/' . $id . '/input_items', [
+            'query' => $params,
+        ]);
+        $data = json_decode($response->getBody()->getContents(), true);
 
         return InputItemsListResponse::fromArray($data);
     }

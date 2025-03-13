@@ -138,9 +138,15 @@ print_r($response);
 use AssistantEngine\OpenAI\Client;
 
 $client = Client::make($_ENV['OPEN_AI_KEY']);
+// Define query parameters for pagination and ordering
+$params = [
+    'after'  => 'item-id-to-start-after',  // Optional: list items after this ID
+    'limit'  => 50,                        // Optional: limit number of items (default is 20)
+    'order'  => 'desc',                    // Optional: order items in descending order
+];
 
 $respId = "resp_123456789";
-$list = $client->responses()->inputItems()->list($respId);
+$list = $client->responses()->inputItems()->list($respId, $params);
 
 print_r($list);
 ```
