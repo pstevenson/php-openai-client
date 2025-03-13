@@ -5,7 +5,7 @@ namespace AssistantEngine\OpenAI\Types\Responses\Output;
 use AssistantEngine\OpenAI\Contracts\ResponseOutputItem;
 use AssistantEngine\OpenAI\Types\Responses\Output\Reasoning\Summary;
 
-class ReasoningOutput implements ResponseOutputItem
+class Reasoning implements ResponseOutputItem
 {
     public const STATUS_IN_PROGRESS = 'in_progress';
     public const STATUS_COMPLETED = 'completed';

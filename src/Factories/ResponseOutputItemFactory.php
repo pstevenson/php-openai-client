@@ -3,12 +3,12 @@
 namespace AssistantEngine\OpenAI\Factories;
 
 use AssistantEngine\OpenAI\Contracts\ResponseOutputItem;
-use AssistantEngine\OpenAI\Types\Responses\Output\ResponseComputerToolCallOutput;
-use AssistantEngine\OpenAI\Types\Responses\Output\FileSearchToolCallOutput;
-use AssistantEngine\OpenAI\Types\Responses\Output\FunctionToolCallOutput;
+use AssistantEngine\OpenAI\Types\Responses\Output\ComputerToolCall;
+use AssistantEngine\OpenAI\Types\Responses\Output\FileSearchToolCall;
+use AssistantEngine\OpenAI\Types\Responses\Output\FunctionToolCall;
 use AssistantEngine\OpenAI\Types\Responses\Output\MessageOutput;
-use AssistantEngine\OpenAI\Types\Responses\Output\WebSearchToolCallOutput;
-use AssistantEngine\OpenAI\Types\Responses\Output\ReasoningOutput;
+use AssistantEngine\OpenAI\Types\Responses\Output\WebSearchToolCall;
+use AssistantEngine\OpenAI\Types\Responses\Output\Reasoning;
 
 class ResponseOutputItemFactory
 {
@@ -16,11 +16,11 @@ class ResponseOutputItemFactory
         $type = $data['type'] ?? '';
         return match ($type) {
             'message' => MessageOutput::fromArray($data),
-            'file_search_call' => FileSearchToolCallOutput::fromArray($data),
-            'function_call' => FunctionToolCallOutput::fromArray($data),
-            'web_search_call' => WebSearchToolCallOutput::fromArray($data),
-            'computer_call' => ResponseComputerToolCallOutput::fromArray($data),
-            'reasoning' => ReasoningOutput::fromArray($data),
+            'file_search_call' => FileSearchToolCall::fromArray($data),
+            'function_call' => FunctionToolCall::fromArray($data),
+            'web_search_call' => WebSearchToolCall::fromArray($data),
+            'computer_call' => ComputerToolCall::fromArray($data),
+            'reasoning' => Reasoning::fromArray($data),
             default => throw new \Exception('Response output item type not found: ' . $type),
         };
     }

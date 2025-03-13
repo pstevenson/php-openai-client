@@ -2,6 +2,7 @@
 
 namespace AssistantEngine\OpenAI\Resources;
 
+use AssistantEngine\OpenAI\Resources\Responses\InputItems;
 use AssistantEngine\OpenAI\Types\Responses\Response;
 use GuzzleHttp\Client;
 
@@ -56,5 +57,15 @@ class Responses
         $response = $this->client->delete("responses/{$id}");
 
         return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
+     * Get the InputItems sub-resource.
+     *
+     * @return InputItems
+     */
+    public function inputItems(): InputItems
+    {
+        return new InputItems($this->client);
     }
 }

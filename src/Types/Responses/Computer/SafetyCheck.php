@@ -1,10 +1,10 @@
 <?php
 
-namespace AssistantEngine\OpenAI\Types\Responses\Output\Computer;
+namespace AssistantEngine\OpenAI\Types\Responses\Computer;
 
 use AssistantEngine\OpenAI\Contracts\HydratableInterface;
 
-class PendingSafetyCheck implements HydratableInterface
+class SafetyCheck implements HydratableInterface
 {
     public string $id;
     public string $code;

@@ -5,7 +5,7 @@ namespace AssistantEngine\OpenAI\Types\Responses\Output;
 use AssistantEngine\OpenAI\Contracts\ResponseOutputItem;
 use AssistantEngine\OpenAI\Types\Responses\Output\FileSearch\Result;
 
-class FileSearchToolCallOutput implements ResponseOutputItem
+class FileSearchToolCall implements ResponseOutputItem
 {
     public const STATUS_IN_PROGRESS = 'in_progress';
     public const STATUS_SEARCHING = 'searching';

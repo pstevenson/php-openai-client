@@ -133,6 +133,17 @@ $response = $client->responses()->create([
 print_r($response);
 ```
 
+```php
+use AssistantEngine\OpenAI\Client;
+
+$client = Client::make($_ENV['OPEN_AI_KEY']);
+
+$respId = "resp_123456789";
+$list = $client->responses()->inputItems()->list($respId);
+
+print_r($list);
+```
+
 Please note that this is an experimental client with the purpose to give you a fast possibility to explore the new OpenAI responses API with PHP. Please expect bugs and that not every feature from the new API is implemented.
 
 ## More Repositories
