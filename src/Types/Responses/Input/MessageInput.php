@@ -13,6 +13,8 @@ class MessageInput implements HydratableInterface
     public const STATUS_COMPLETED = 'completed';
     public const STATUS_INCOMPLETE = 'incomplete';
 
+    public string $id;
+
     /**
      * A list of one or many input items to the model, containing different content types.
      *
@@ -50,6 +52,7 @@ class MessageInput implements HydratableInterface
     public static function fromArray(array $data): self
     {
         $instance = new self();
+        $instance->id = $data['id'] ?? '';
         $instance->role = $data['role'] ?? 'user';
         $instance->status = $data['status'] ?? null;
         $instance->type = $data['type'] ?? 'message';
