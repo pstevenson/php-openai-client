@@ -4,7 +4,7 @@ namespace AssistantEngine\OpenAI\Types\Responses\Output;
 
 use AssistantEngine\OpenAI\Contracts\ResponseOutputItem;
 
-class FunctionToolCallOutput implements ResponseOutputItem
+class FunctionToolCall implements ResponseOutputItem
 {
     public const STATUS_IN_PROGRESS = 'in_progress';
     public const STATUS_COMPLETED   = 'completed';

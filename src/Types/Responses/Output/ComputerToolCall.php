@@ -4,9 +4,9 @@ namespace AssistantEngine\OpenAI\Types\Responses\Output;
 
 use AssistantEngine\OpenAI\Contracts\ResponseOutputItem;
 use AssistantEngine\OpenAI\Factories\ActionFactory;
-use AssistantEngine\OpenAI\Types\Responses\Output\Computer\PendingSafetyCheck;
+use AssistantEngine\OpenAI\Types\Responses\Computer\SafetyCheck;
 
-class ResponseComputerToolCallOutput implements ResponseOutputItem
+class ComputerToolCall implements ResponseOutputItem
 {
     public const STATUS_IN_PROGRESS = 'in_progress';
     public const STATUS_COMPLETED   = 'completed';
@@ -18,7 +18,7 @@ class ResponseComputerToolCallOutput implements ResponseOutputItem
     public string $type; // must always be "computer_call"
     /** @var object The action object (one of the action classes below) */
     public object $action;
-    /** @var PendingSafetyCheck[] */
+    /** @var SafetyCheck[] */
     public array $pending_safety_checks;
 
     public static function fromArray(array $data): self {
@@ -37,7 +37,7 @@ class ResponseComputerToolCallOutput implements ResponseOutputItem
         $instance->pending_safety_checks = [];
         if (isset($data['pending_safety_checks']) && is_array($data['pending_safety_checks'])) {
             foreach ($data['pending_safety_checks'] as $checkData) {
-                $instance->pending_safety_checks[] = PendingSafetyCheck::fromArray($checkData);
+                $instance->pending_safety_checks[] = SafetyCheck::fromArray($checkData);
             }
         }
         return $instance;
