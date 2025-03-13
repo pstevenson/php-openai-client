@@ -132,6 +132,7 @@ $response = $client->responses()->create([
 
 print_r($response);
 ```
+### List input items
 
 ```php
 use AssistantEngine\OpenAI\Client;
